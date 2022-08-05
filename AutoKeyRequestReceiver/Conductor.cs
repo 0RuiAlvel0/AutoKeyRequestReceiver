@@ -13,29 +13,18 @@ namespace AutoKeyRequestReceiver
         {
             Console.Clear();
             //Check if settings file exists
-            string SettingsFilePath = "settings";
+            string SettingsFilePath = AppDomain.CurrentDomain.BaseDirectory + "settings.cfg";
             if (Auxmethods.FileExists(SettingsFilePath))
             {
-                Console.WriteLine("Found a file called settings.");
+                Auxmethods.selectportUI(SettingsFilePath);
+                String SelectedPort = Console.ReadLine();
+
+                //Test the user input. if no choice, try the saved port.
+
+
             }
             else
-                Console.WriteLine("No settings file. Please add a settings file on this current directory. See ");
-            //Check if port specified in settings is available. Open it if it is, ask to change if not.
-
-
-            // Get a list of serial port names.
-            string[] ports = SerialPort.GetPortNames();
-
-            Console.WriteLine("The following serial ports were found:");
-
-            // Display each port name to the console.
-            int counter = 0;
-            foreach (string port in ports)
-            {
-                Console.Write(port);
-            }
-
-            Console.WriteLine("Enter port to use (will be saved on the configuration file):");
+                Console.WriteLine("No settings file. See https://github.com/0RuiAlvel0/AutoKeyRequestReceiver for details.");
         }
     }
 }
